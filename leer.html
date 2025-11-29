@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Leer Página</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        text-align: center;
+    }
+    button {
+        padding: 12px 20px;
+        font-size: 18px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>🔊 Lector de Página</h2>
+<p>Pulsa el botón y te leerá el contenido del Google Site.</p>
+
+<button onclick="leerPagina()">Leer la página</button>
+<button onclick="parar()">Parar</button>
+
+<script>
+function leerPagina() {
+    const texto = window.parent.document.body.innerText;
+    const speech = new SpeechSynthesisUtterance(texto);
+    speech.lang = "es-ES";
+    window.speechSynthesis.speak(speech);
+}
+
+function parar() {
+    window.speechSynthesis.cancel();
+}
+</script>
+
+</body>
+</html>
